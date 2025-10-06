@@ -2,32 +2,49 @@
 #include "buttons.h"
 #include "menu.h"
 #include "maxen.h"
+#include "screen.h"
 
 #include <Arduino.h>
-#include <OledDisplay.h>   // OLED lib from DevKit SDK
+
+int ctr = 0;
+int ctr_l = 0;
+int bctr = 0;
+int bctr_l = 0;
+
+char buffer[20];
 
 void setup() {
   leds::setup();    // Init RGB LEDs only
   buttons::setup(); // Init buttons
   menu::setup();    // Init menu system
-  Screen.init();    // Init OLED
-  
-  Screen.clean();
-  Screen.print("Ready...");
+  screen::setup();  // Init screen
 }
 
 void loop() {
-  if (buttons::isPressed('a')) {
-    Screen.clean();
-    char buffer[20];
-    snprintf(buffer, sizeof(buffer), "Score: %d", maxen::score);
-    Screen.print(buffer);
-    leds::set(0, true); // Turn off current LED
-  }
-  if (buttons::isPressed('b')) {
-    Screen.clean();
-    Screen.print("Button B");
-    leds::set(0, false); // Turn off current LED
-  }
+
+  menu::mainMenu();
+  // if (buttons::isPressed('a')) {
+  //   Screen.clean();
+  //   sprintf(buffer, "Count A: %d", ++ctr);
+  //   Screen.print(buffer);
+  // }
+
+  // if (buttons::isLongPressed('a')) {
+  //   Screen.clean();
+  //   sprintf(buffer, "Long A: %d", ++ctr_l);
+  //   Screen.print(buffer); 
+  // }
+
+  // if (buttons::isLongPressed('b')){
+  //   Screen.clean();
+  //   sprintf(buffer, "Long B: %d", ++bctr_l);
+  //   Screen.print(buffer);
+  // }
+  
+  // if (buttons::isPressed('b')) {
+  //   Screen.clean();
+  //   sprintf(buffer, "Count B: %d", ++bctr);
+  //   Screen.print(buffer);
+  // }
     
 }

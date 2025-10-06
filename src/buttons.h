@@ -9,12 +9,13 @@
 #define BUTTON_B  10   // onboard B button
 #define BUTTON_B_pn PA_10
 
-#define debounceDelay 100         // 100 ms
-#define longPressTime 1500     // 1.5 sec
+#define debounceDelay 40       // 40 ms RAAD AAN NIET TE VERHOGEN SINDS DE IMPLEMENTATIE HET NIET HEEL GRAPPIG VINDT!!! 
+#define longPressTime 700       // 0.7 sec
 
 namespace buttons {    
     void setup();
     bool isPressed(char button);
+    bool isLongPressed(char button);
 }
 
 #endif // BUTTONS_H

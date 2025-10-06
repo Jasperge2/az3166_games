@@ -1,7 +1,11 @@
 #ifndef MENU_H
 #define MENU_H
 
+//games includes
 #include "maxen.h"
+
+#include "screen.h"
+
 
 #pragma once
 #undef min

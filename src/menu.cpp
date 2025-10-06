@@ -14,29 +14,49 @@ namespace menu {
     void setup() {
         //add your games here
         addOption("Maxen", [](){ maxen::setup(); });
+        addOption("something", [](){ screen::print("Not implemented"); });
+        addOption("nothing", [](){ screen::print("Not notinged"); });
+        addOption("exit", [](){ screen::print("Exiting..."); });
     }
 
     void mainMenu() {
         // Read buttons
+        char buf[20];
+        uint8_t change_flag = 0;
         if (buttons::isPressed('a')) {
             navigateDown();
+            change_flag = 1;
         }
         if (buttons::isPressed('b')) {
             navigateUp(); 
+            change_flag = 1;
         }
-}
+        if (buttons::isLongPressed('b')) {
+            selectOption();
+        }
+        if (!options.empty() && change_flag) {
+            change_flag = 0;
+            sprintf(buf, "> %s", options[currentOption].gameName.c_str());
+            screen::displayMenu(buf);
+        }
+    }
 
     void navigateUp() {
-        currentOption++;
-        if (currentOption >= (int)options.size()) {
-            currentOption = 0;  // loop back
+        if (currentOption >= (int)options.size() - 1) {
+            return; // no options
+        }
+        else {
+            currentOption++;
         }
     }
 
     void navigateDown() {
-        currentOption--;
-        if (currentOption < 0) {
-            currentOption = options.size() - 1; // loop back
+        
+        if (currentOption <= 0) {
+            currentOption = 0;  // stay at first option
+        }
+        else {
+            currentOption--;
         }
     }
 
