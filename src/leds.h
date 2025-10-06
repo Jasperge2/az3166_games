@@ -14,6 +14,6 @@
 
 namespace leds {
     void setup(bool red = 1, bool green = 1 , bool blue = 1 , bool wifi = 1, bool user = 1);
-    void set(int led, bool state);
+    void set(uint8_t led, bool state);
 }
 #endif // LEDS_H

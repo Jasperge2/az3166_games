@@ -10,7 +10,7 @@ namespace leds {
         if(user) pinMode(USER_LED, OUTPUT);
     }
 
-    void set(int led, bool state) {
+    void set(uint8_t led, bool state) {
         int pin;
         switch(led) {
             case 0: pin = RED_LED; break;
@@ -20,7 +20,7 @@ namespace leds {
             case 4: pin = USER_LED; break;
             default: return; // invalid LED index
         }
-        digitalWrite(pin, state ? HIGH : LOW);
+        digitalWrite(pin, state);
 
     } // namespace leds
 }
