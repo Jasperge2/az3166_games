@@ -9,7 +9,8 @@
 #define BUTTON_B  10   // onboard B button
 #define BUTTON_B_pn PA_10
 
-#define debounceDelay 100 // ms
+#define debounceDelay 100         // 100 ms
+#define longPressTime 1500     // 1.5 sec
 
 namespace buttons {    
     void setup();
